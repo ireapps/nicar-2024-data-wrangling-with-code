@@ -23,7 +23,7 @@ cd ~/Desktop/hands_on_classes/20240308-friday-data-wrangling-with-code && source
     - Selecting specific columns of data
     - Assessing cleanliness of data values
     - Subsetting into smaller files
-- Dealing with garbage headers and Excel formatting: (U.N. population data)[really-bad-spreadsheet]
+- Dealing with garbage headers and Excel formatting: [U.N. population data](really-bad-spreadsheet)
     - Skipping rows
     - Dealing with grouping headers
 - Parsing a spreadsheet formatted like a paper report: [Annapolis rental violations](annapolis-rental-violations)
