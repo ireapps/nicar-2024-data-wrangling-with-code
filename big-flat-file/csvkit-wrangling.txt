@@ -1,0 +1,34 @@
+
+cd Desktop/hands_on_classes/20240308-friday-data-wrangling-with-code/big-flat-file/
+
+- take a peak: is it actually formatted as a csv? (If not we can still look at it with csvkit, just need to tweak things)
+cat nid_2024-01-17.csv | head
+
+- check the headers
+csvcut -n nid_2024-01-17.csv
+
+- remove the pesky first row
+csvcut nid_2024-01-17.csv -k 1 > nid_clean.csv
+
+- better
+csvcut -n nid_clean.csv
+
+- pull out a state!
+-- first, how are states represented: 
+csvcut -c 20 nid_clean.csv | csvstat
+
+- look at unique values in a column
+csvcut -c 20 nid_clean.csv | sed1 | sort | uniq
+
+-- next, identify what state you want:
+csvgrep -c 20 -m Missouri nid_clean.csv
+
+- use SQL?!?
+-- first, let's explore the "Primary Purpose" column (# 14)
+csvcut -c 14 nid_clean.csv | sed1 | sort | uniq
+
+
+
+
+
+

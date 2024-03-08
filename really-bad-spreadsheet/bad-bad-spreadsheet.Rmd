@@ -1,0 +1,31 @@
+---
+title: "Bad Bad Spreadsheet"
+output: 
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+
+
+## A really bad spreadsheet ##
+
+- import by range
+- use janitor to help with unwieldy names
+- append a prefix for certain columns to name
+- convert bad excel numbers to true numbers
+- overwrite names if you need to
+
+```{r message=FALSE}
+data <- read_excel("UN_population.xlsx", sheet=1, range="A17:BM20613", col_types = "text") %>% 
+  clean_names() %>% 
+  mutate(across(12:65, parse_number)) %>% 
+  rename_at(vars(12:23), ~ str_c("pop_", .)) %>% 
+  rename_at(vars(24:30), ~ str_c("fert_",.)) %>% 
+  rename_at(vars(31:63), ~ str_c("mort_",.)) %>% 
+  rename_at(vars(64:65), ~ str_c("migr_", .))
+
+  summary(data)
+```
+
